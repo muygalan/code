@@ -7,6 +7,14 @@ nav_order: 1
 
 # Bulma Setup
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 ## Download Method 1
 
 If you have **node** installed on your computer, you can simply run the following command in your terminal within your desired folder:
