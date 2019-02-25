@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Structure
-parent: HTML
+parent: CSS
 nav_order: 1
 ---
 
