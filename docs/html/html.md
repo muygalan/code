@@ -8,5 +8,5 @@ permalink: /docs/html
 
 # HTML
 
-To make it as easy as possible to write documentation in plain Markdown, most UI components are styled using default Markdown elements with few additional CSS classes needed.
+HyperText Markup Language, gives content structure and meaning by defining that content as, for example, headings, paragraphs, or images.
 {: .fs-6 .fw-300 }

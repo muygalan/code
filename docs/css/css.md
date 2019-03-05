@@ -8,5 +8,5 @@ permalink: /docs/css
 
 # CSS
 
-To make it as easy as possible to write documentation in plain Markdown, most UI components are styled using default Markdown elements with few additional CSS classes needed.
+Cascading Style Sheets, is a presentation language created to style the appearance of content—using, for example, fonts or colors.
 {: .fs-6 .fw-300 }

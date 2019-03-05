@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Structure
-parent: CSS
+title: Boilerplate
+parent: HTML
 nav_order: 1
 ---
 
