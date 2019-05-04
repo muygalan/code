@@ -228,7 +228,11 @@ p {
 
 ### Block
 
+Block-level elements begin on a new line, stacking one on top of the other, and occupy any available width. Block-level elements may be nested inside one another and may wrap inline-level elements. We’ll most commonly see block-level elements used for larger pieces of content, such as paragraphs.
+
 ### Inline
+
+Inline-level elements do not begin on a new line. They fall into the normal flow of a document, lining up one after the other, and only maintain the width of their content. Inline-level elements may be nested inside one another; however, they cannot wrap block-level elements. We’ll usually see inline-level elements with smaller pieces of content, such as a few words.
 
 ### Inline-Block
 
@@ -241,3 +245,254 @@ According to the box model concept, every element on a page is a rectangular box
 ![](../img/css-boxmodel.png)
 
 Each part of the box model corresponds to a CSS property: `width, height, padding, border`, and `margin`.
+
+## Calculate Width & Height
+
+According to the box model, the total width of an element can be calculated using the following formula:
+
+`margin-right + border-right + padding-right + width + padding-left + border-left + margin-left`
+
+In comparison, according to the box model, the total height of an element can be calculated using the following formula:
+
+`margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom`
+
+![](../img/css-boxmodel-img2.png)
+
+Using the formulas, we can find the total height and width of our example code.
+
+**Width:** 492px = 20px + 6px + 20px + 400px + 20px + 6px + 20px
+
+**Height:** 192px = 20px + 6px + 20px + 100px + 20px + 6px + 20px
+
+The box model is without question one of the more confusing parts of HTML and CSS. We set a `width` property value of `400` pixels, but the actual width of our element is `492` pixels. By default the box model is additive; thus to determine the actual size of a box we need to take into account padding, borders, and margins for all four sides of the box. Our width not only includes the `width` property value, but also the size of the left and right padding, left and right borders, and left and right margins.
+
+## Width
+
+The default width of an element depends on its display value. Block-level elements have a default width of `100%`, consuming the entire horizontal space available. _Inline_ and _inline-block_ elements expand and contract horizontally to accommodate their content. Inline-level elements cannot have a fixed size, thus the `width` and `height` properties are only relevant to non-inline elements. To set a specific width for a non-inline element, use the width property:
+
+```
+div {
+  width: 400px;
+}
+```
+
+## Height
+
+The default height of an element is determined by its content. An element will expand and contract vertically as necessary to accommodate its content. To set a specific height for a non-inline element, use the `height` property:
+
+```
+div {
+  height: 100px;
+}
+```
+
+## Sizing Inline-Level Elements
+
+Please keep in mind that inline-level elements will not accept the `width` and `height` properties or any values tied to them. Block and inline-block elements will, however, accept the `width` and `height` properties and their corresponding values.
+
+## Margin
+
+The `margin` property allows us to set the amount of space that surrounds an element. Margins for an element fall outside of any border and are completely transparent in color. Margins can be used to help position elements in a particular place on a page or to provide breathing room, keeping all other elements a safe distance away. Here’s the `margin` property in action:
+
+```
+div {
+  margin: 20px;
+}
+```
+
+One oddity with the `margin` property is that vertical margins, `top` and `bottom`, are not accepted by inline-level elements. These vertical margins are, however, accepted by block-level and inline-block elements.
+
+## Padding
+
+The `padding` property is very similar to the margin property; however, it falls inside of an element’s border, should an element have a border. The `padding` property is used to provide spacing directly within an element. Here’s the code:
+
+```
+div {
+  padding: 20px;
+}
+```
+
+The `padding` property, unlike the `margin` property, works vertically on inline-level elements. This vertical `padding` may blend into the line above or below the given element, but it will be displayed.
+
+## Margin & Padding on Inline-Level Elements
+
+Inline-level elements are affected a bit differently than block and inline-block elements when it comes to margins and padding. Margins only work horizontally—**left** and **right**—on inline-level elements. Padding works on all four sides of inline-level elements; however, the vertical padding—the **top** and **bottom**—may bleed into the lines above and below an element.
+
+Margins and padding work like normal for block and inline-block elements.
+
+
+## Margin & Padding Declarations
+
+Using the `margin` or `padding` property alone, with any number of values, is considered shorthand. With longhand, we can set the value for one side at a time using unique properties. Each property name (in this case margin or padding) is followed by a dash and the side of the box to which the value is to be applied: `top, right, bottom, or left`. For example, the padding-left property accepts only one value and will set the **left** padding for that element; the `margin-top` property accepts only one value and will set the top margin for that element.
+
+```
+div {
+  margin: 10px 20px 0 15px;
+}
+
+div {
+  margin-top: 10px;
+  padding-left: 6px;
+}
+```
+
+## Borders
+
+Borders fall between the padding and margin, providing an outline around an element. The `border` property requires three values: `width, style, and color`. Shorthand values for the border property are stated in that order—`width, style, color`. In longhand, these three values can be broken up into the `border-width, border-style, and border-color` properties. These longhand properties are useful for changing, or overwriting, a single border value.
+
+Borders can have different appearances. The most common style values are `solid, double, dashed, dotted, and none`, but there are several others to choose from.
+
+```
+div {
+  border: 6px solid #949599;
+}
+```
+
+## Individual Border Sides
+
+As with the `margin` and `padding` properties, borders can be placed on one side of an element at a time if we’d like. Doing so requires new properties: `border-top, border-right, border-bottom, and border-left`. The values for these properties are the same as those of the `border` property alone: `width, style, and color`. If we want, we can make a border appear only on the bottom of an element:
+
+```
+div {
+  border-bottom: 6px solid #949599;
+}
+```
+
+Additionally, styles for individual border sides may be controlled at an even finer level. For example, if we wish to change only the `width` of the bottom border we can use the following code:
+
+```
+div {
+  border-bottom-width: 12px;
+}
+```
+
+These highly specific longhand border properties include a series of hyphen-separated words starting with the border base, followed by the selected side—`top, right, bottom, or left`—and then `width, style, or color`, depending on the desired property.
+
+## Border Radius
+
+Enables us to round the corners of an element. 
+
+The border-radius property accepts length units, including percentages and pixels, that identify the radius by which the corners of an element are to be rounded. A single value will round all four corners of an element equally; two values will round the `top-left/bottom-right` and `top-right/bottom-left` corners in that order; four values will round the `top-left, top-right, bottom-right, and bottom-left` corners in that order.
+
+```
+div {
+  border-radius: 5px;
+}
+```
+
+The `border-radius` property may also be broken out into longhand properties that allow us to change the radii of individual corners of an element. These longhand properties begin with `border`, continue with the corner’s vertical location (`top or bottom`) and the corner’s horizontal location (`left or right`), and then end with radius. For example, to change the top-right corner radius of a `<div>`, the `border-top-right-radius` property can be used.
+
+```
+div {
+  border-top-right-radius: 5px;
+}
+```
+
+## Box Sizing 
+
+Until now the box model has been an additive design. CSS3 introduced the `box-sizing` property, which allows us to change exactly how the box model works and how an element’s size is calculated. The property accepts three primary values—`content-box, padding-box, and border-box`—each of which has a slightly different impact on how the box size is calculated.
+
+## Content Box
+
+The `content-box` value is the default value, leaving the box model as an additive design. If we don’t use the `box-sizing` property, this will be the default value for all elements. The size of an element begins with the `width` and `height` properties, and then any `padding, border, or margin` property values are added on from there.
+
+```
+div {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+```
+
+## Browser-Specific Properties & Values
+
+As CSS3 was introduced, browsers gradually began to support different properties and values, including the `box-sizing` property, by way of vendor prefixes. Vendor prefixes may be seen on both properties and values, all depending on the CSS specification.
+
+When a property or value needs a vendor prefix, the prefix will only be used in the introduction of that property or value (in the interest of keeping our code digestible and concise).
+
+For reference, the most common vendor prefixes are outlined here:
+
+Mozilla Firefox: `-moz-`
+Microsoft Internet Explorer: `-ms-`
+Webkit (Google Chrome and Apple Safari): `-webkit-`
+
+## Border Box
+
+The `border-box` value alters the box model so that any `border` or `padding` property values are included within the `width` and `height` of an element. When using the `border-box` value, if an element has a `width` of `400` pixels, a padding of `20` pixels around every side, and a `border` of `10` pixels around every side, the actual width will remain `400` pixels.
+
+If we add a `margin`, those values will need to be added to calculate the full `box size`. No matter which box-sizing property value is used, any margin values will need to be added to calculate the full size of the element.
+
+![](../img/css-box-sizing.png)
+
+## Universal Selector
+
+In CSS the asterisk, `*`, is the **universal selector**, which selects every element. Rather than listing every single element imaginable, we can use the asterisk as a catch-all to select all elements for us.
+
+The `:before` and `:after` pseudo-elements also mentioned in this step are elements that can be dynamically generated with CSS. When using the universal selector it’s a good practice to also include these pseudo-elements in case they should ever appear.
+
+## Float
+
+One way to position elements on a page is with the `float` property. The `float` property allows us to take an element, remove it from the normal flow of a page, and position it to the left or right of its parent element. All other elements on the page will then flow around the floated element. An `<img>` element floated to the side of a few paragraphs of text, for example, will allow the paragraphs to wrap around the image as necessary.
+
+The float property accepts a few values; the two most popular values are `left` and `right`, which allow elements to be floated to the left or right of their parent element.
+
+```
+img {
+  float: left;
+}
+```
+
+For reference, when an element is floated, it will float all the way to the edge of its parent element. If there isn’t a parent element, the floated element will then float all the way to the edge of the page.
+
+When we float an element, we take it out of the normal flow of the HTML document. This causes the width of that element to default to the width of the content within it. Sometimes, such as when we’re creating columns for a reusable layout, this behavior is not desired. It can be corrected by adding a fixed `width` property value to each column. Additionally, to prevent floated elements from touching one another, causing the content of one to sit directly next to the content of the other, we can use the `margin` property to create space between elements.
+
+## Clearing Floats
+
+Clearing floats is accomplished using the `clear` property, which accepts a few different values: the most commonly used values being `left, right, and both`.
+
+```
+div {
+  clear: left;
+}
+```
+
+The `left` value will clear left floats, while the `right` value will clear right floats. The both value, however, will clear `both` left and right floats and is often the most ideal value.
+
+## Containing Floats
+
+Rather than clearing floats, another option is to contain the floats. The outcomes of containing floats versus those of clearing them are nearly the same; however, containing floats does help to ensure that all of our styles will be rendered properly.
+
+To contain floats, the floated elements must reside within a parent element. The parent element will act as a container, leaving the flow of the document completely normal outside of it. The CSS for that parent element, represented by the `group` class below, is shown here:
+
+```
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+```
+
+There’s quite a bit going on here, but essentially what the CSS is doing is clearing any floated elements within the element with the class of `group` and returning the flow of the document back to normal.
+
+More specifically, the `:before` and `:after` pseudo-elements, as mentioned in the Lesson 4 exercise, are dynamically generated elements above and below the element with the class of `group`. Those elements do not include any content and are displayed as `table`-level elements, much like block-level elements. The dynamically generated element after the element with the class of `group` is clearing the floats within the element with the class of `group`, much like the `clear` from before. And lastly, the element with the class of `group` itself also clears any floats that may appear above it, in case a left or right float may exist. It also includes a little trickery to get older browsers to play nicely.
+
+It is more code than the `clear: both`; declaration alone, but it can prove to be quite useful.
+
+## Positioning with Inline-Block
+
+n addition to using floats, another way we can position content is by using the display property in conjunction with the inline-block value. [Read more](https://learn.shayhowe.com/html-css/positioning-content/#inline-block)
+
+## Position
+
+The `position` property identifies how an element is positioned on a page and whether or not it will appear within the normal flow of a document. This is used in conjunction with the box offset properties—`top, right, bottom, and left`—which identify exactly where an element will be positioned by moving elements in a number of different directions.
+
+By default every element has a `position` value of `static`, which means that it exists in the normal flow of a document and it doesn’t accept any box offset properties. The `static` value is most commonly overwritten with a `relative` or `absolute` value, which we’ll examine next.
+
+## Relative Positioning
