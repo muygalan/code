@@ -38,17 +38,17 @@ nav_order: 1
 ## Folder Structure
 
 For larger scale projects, try implementing the following folder structure:
-
-- `/css`
-  - `style.css`
-  - `/img`
+- `resources`
+  - `/css`
+    - `style.css`
+    - `/img` — images pertaining to the specific webpage can be placed here.
 - `/data`
-- `/img`
+- `/img` — a collective variety of images can be placed here.
 - `/js`
 
-- `/vendors`
+- `/vendors` — files obtained from the internet.
   - `/css` — this is for external css stylesheet files (e.g. normalize, resets, bootstrap, grids etc.)
-  - `/fonts`
+  - `/fonts` — specific fonts downloaded from the internet.
   - `/js`
 - `index.html`
 
@@ -68,6 +68,10 @@ Begin each `style.css` file with this bare minimum CSS reset:
 
 Always order your CSS rules alphabetically. 
 
+## Define Website Base Styles
+
+Use the `html` property for this. For fonts, use the `px` unit. Fonts used thereafter, use percentages. 
+
 **Example:**
 
 ```
@@ -80,6 +84,7 @@ html {
   text-rendering: optimizeLegibility;
 }
 ```
+
 
 ## Sectioning your Stylesheet
 
@@ -106,6 +111,73 @@ Add media queries here.
 
 /* Footer */
 
+/* -------------------------------------- */ 
+/* HEADER */
+/* -------------------------------------- */ 
+
+/* -------------------------------------- */ 
+/* REUSABLE COMPONENTS */
+/* -------------------------------------- */ 
+
+/* ----- HEADINGS ----- */ 
+
 ```
 
+## Responsive Web Design
 
+### Obtaining Percentages for Font-Sizes
+
+Divide the font you want by the predefined HTML font.
+
+**Example:**
+
+18/20 = 0.9 or 90%
+
+### Custom Grids
+
+TBA
+
+## Layout Structure
+
+### Headers
+
+Headers usually have a large _hero_ image with a website logo, navigation bar, and hero text box.
+
+Example:
+
+```
+<header>
+      <nav>
+        <div class="row">
+          <img src="resources/img/logo-white.png" alt="Omnifood logo" class="logo">
+          <ul class="main-nav">
+            <li><a href="#">Food delivery</a></li>
+            <li><a href="#">How it works</a></li>
+            <li><a href="#">Our cities</a></li>
+            <li><a href="#">Sign up</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="hero-text-box">
+        <h1>Goodbye junk food.<br> Hello super healthy meals.</h1>
+        <a class="btn btn-full" href="#">I’m hungry</a>
+        <a class="btn btn-ghost" href="#">Show me more</a>
+      </div>
+    </header>
+```
+
+- Define the height of the `header`. 
+
+Example: `height: 100vh;`
+
+- Basic background-image template:
+
+```
+x background-image: url(img/image.jpg);
+x background-size: cover;
+x background-position: center;
+```
+
+The above provides a background image to your `header` that covers it in full with a centered position.
+
+### Text Boxes
